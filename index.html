@@ -1,145 +1,247 @@
 <!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PHOENIX AI</title>
-  <style>
-    * { box-sizing: border-box; }body {
-  margin: 0;
-  min-height: 100vh;
-  background: #05070d;
-  color: white;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>PHOENIX AI</title>  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.app {
-  width: 100%;
-  max-width: 600px;
-  min-height: 100vh;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #05070d;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+    }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    .app {
+      width: 100%;
+      max-width: 600px;
+      min-height: 100vh;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
 
-.logo {
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: 3px;
-}
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.status {
-  font-size: 12px;
-  opacity: .7;
-}
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 3px;
+    }
 
-.orb {
-  width: 150px;
-  height: 150px;
-  margin: 70px auto 35px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #ffffff, #6c7cff 25%, #18204d 55%, #080b15 70%);
-  box-shadow: 0 0 60px #5264ff;
-  animation: pulse 3s infinite ease-in-out;
-}
+    .status {
+      font-size: 12px;
+      opacity: 0.7;
+    }
 
-@keyframes pulse {
-  50% { transform: scale(1.08); }
-}
+    .orb {
+      width: 150px;
+      height: 150px;
+      margin: 70px auto 35px;
+      border-radius: 50%;
+      background:
+        radial-gradient(
+          circle,
+          #ffffff,
+          #6c7cff 25%,
+          #18204d 55%,
+          #080b15 70%
+        );
 
-.welcome {
-  text-align: center;
-  font-size: 22px;
-  margin-bottom: 25px;
-}
+      box-shadow: 0 0 60px #5264ff;
+      animation: pulse 3s infinite ease-in-out;
+    }
 
-.chat {
-  flex: 1;
-  border: 1px solid #202638;
-  border-radius: 20px;
-  padding: 18px;
-  min-height: 180px;
-  background: #090c14;
-}
+    @keyframes pulse {
+      50% {
+        transform: scale(1.08);
+      }
+    }
 
-.message {
-  opacity: .75;
-  line-height: 1.5;
-}
+    .welcome {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 25px;
+    }
 
-.controls {
-  display: flex;
-  gap: 10px;
-  margin-top: 18px;
-}
+    .chat {
+      flex: 1;
+      border: 1px solid #202638;
+      border-radius: 20px;
+      padding: 18px;
+      min-height: 220px;
+      background: #090c14;
+      overflow-y: auto;
+    }
 
-input {
-  flex: 1;
-  padding: 15px;
-  border-radius: 14px;
-  border: 1px solid #252c40;
-  background: #0c101a;
-  color: white;
-  outline: none;
-}
+    .message {
+      opacity: 0.85;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
 
-button {
-  border: 0;
-  border-radius: 14px;
-  padding: 15px 18px;
-  background: #5868ff;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
+    .user {
+      color: #ffffff;
+    }
 
-button:active {
-  transform: scale(.97);
-}
+    .ai {
+      color: #9da8ff;
+    }
 
-  </style>
-</head><body>
-  <main class="app">
-    <header>
-      <div class="logo">PHOENIX</div>
-      <div class="status">SYSTEM ONLINE</div>
-    </header><div class="orb"></div>
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
 
-<div class="welcome">Your intelligent layer for the future.</div>
+    input {
+      flex: 1;
+      padding: 15px;
+      border-radius: 14px;
+      border: 1px solid #252c40;
+      background: #0c101a;
+      color: white;
+      outline: none;
+      font-size: 15px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 14px;
+      padding: 15px 18px;
+      background: #5868ff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    .thinking {
+      opacity: 0.5;
+      font-style: italic;
+    }
+  </style></head><body>  <main class="app"><header>
+  <div class="logo">PHOENIX</div>
+  <div class="status">SYSTEM ONLINE</div>
+</header>
+
+<div class="orb"></div>
+
+<div class="welcome">
+  Your intelligent layer for the future.
+</div>
 
 <section class="chat" id="chat">
-  <div class="message">
+
+  <div class="message ai">
     PHOENIX is ready.<br>
     What do you want to accomplish?
   </div>
+
 </section>
 
 <div class="controls">
-  <input id="input" placeholder="Tell PHOENIX what you need...">
-  <button onclick="sendMessage()">SEND</button>
+
+  <input
+    id="input"
+    type="text"
+    placeholder="Tell PHOENIX what you need..."
+    autocomplete="off"
+  >
+
+  <button onclick="sendMessage()">
+    SEND
+  </button>
+
 </div>
 
-  </main>  <script>
-    function sendMessage() {
-      const input = document.getElementById("input");
+  </main>  <!-- PHOENIX BRAIN -->  <script src="brain.js"></script>  <script>
+
+    function addMessage(text, type) {
+
       const chat = document.getElementById("chat");
 
-      if (!input.value.trim()) return;
-
       const message = document.createElement("div");
-      message.className = "message";
-      message.style.marginTop = "15px";
-      message.textContent = "You: " + input.value;
+
+      message.className = "message " + type;
+
+      message.textContent = text;
 
       chat.appendChild(message);
-      input.value = "";
+
+      chat.scrollTop = chat.scrollHeight;
     }
+
+
+    function sendMessage() {
+
+      const input = document.getElementById("input");
+
+      const text = input.value.trim();
+
+      if (!text) return;
+
+
+      // Show user's message
+      addMessage("You: " + text, "user");
+
+      input.value = "";
+
+
+      // Make PHOENIX think
+      const thinking = document.createElement("div");
+
+      thinking.className = "message thinking";
+
+      thinking.textContent = "PHOENIX is thinking...";
+
+      document.getElementById("chat").appendChild(thinking);
+
+
+      setTimeout(() => {
+
+        thinking.remove();
+
+
+        // Send input to PHOENIX brain
+        const result = PhoenixBrain.process(text);
+
+
+        // Show detected intent
+        addMessage(
+          "PHOENIX: Intent detected → " + result.intent,
+          "ai"
+        );
+
+
+      }, 500);
+
+    }
+
+
+    // Press Enter to send
+    document
+      .getElementById("input")
+      .addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+
+          sendMessage();
+
+        }
+
+      });
+
   </script></body>
 </html>
