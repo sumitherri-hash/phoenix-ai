@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHOENIX AI</title>
+  <style>
+    * { box-sizing: border-box; }body {
+  margin: 0;
+  min-height: 100vh;
+  background: #05070d;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  width: 100%;
+  max-width: 600px;
+  min-height: 100vh;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.status {
+  font-size: 12px;
+  opacity: .7;
+}
+
+.orb {
+  width: 150px;
+  height: 150px;
+  margin: 70px auto 35px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff, #6c7cff 25%, #18204d 55%, #080b15 70%);
+  box-shadow: 0 0 60px #5264ff;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.08); }
+}
+
+.welcome {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 25px;
+}
+
+.chat {
+  flex: 1;
+  border: 1px solid #202638;
+  border-radius: 20px;
+  padding: 18px;
+  min-height: 180px;
+  background: #090c14;
+}
+
+.message {
+  opacity: .75;
+  line-height: 1.5;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+input {
+  flex: 1;
+  padding: 15px;
+  border-radius: 14px;
+  border: 1px solid #252c40;
+  background: #0c101a;
+  color: white;
+  outline: none;
+}
+
+button {
+  border: 0;
+  border-radius: 14px;
+  padding: 15px 18px;
+  background: #5868ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+  </style>
+</head><body>
+  <main class="app">
+    <header>
+      <div class="logo">PHOENIX</div>
+      <div class="status">SYSTEM ONLINE</div>
+    </header><div class="orb"></div>
+
+<div class="welcome">Your intelligent layer for the future.</div>
+
+<section class="chat" id="chat">
+  <div class="message">
+    PHOENIX is ready.<br>
+    What do you want to accomplish?
+  </div>
+</section>
+
+<div class="controls">
+  <input id="input" placeholder="Tell PHOENIX what you need...">
+  <button onclick="sendMessage()">SEND</button>
+</div>
+
+  </main>  <script>
+    function sendMessage() {
+      const input = document.getElementById("input");
+      const chat = document.getElementById("chat");
+
+      if (!input.value.trim()) return;
+
+      const message = document.createElement("div");
+      message.className = "message";
+      message.style.marginTop = "15px";
+      message.textContent = "You: " + input.value;
+
+      chat.appendChild(message);
+      input.value = "";
+    }
+  </script></body>
+</html>
